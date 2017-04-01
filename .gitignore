@@ -11,6 +11,10 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+# Ignore files - Needed in dev environment
+config/database.yml
+config/security.yml
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
@@ -19,6 +23,3 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
-config/database.yml
-config/security.yml
