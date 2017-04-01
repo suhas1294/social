@@ -1,0 +1,27 @@
+<style type="text/css">
+  .custom{
+    border: 1px solid black;
+    padding: 5px;
+  }
+</style>
+
+<div class="container">
+  <div class="row custom">
+    <%#= link_to 'My Profile', "/dashboard/#{current_user.id}", method: :get , :class => "btn btn-default"%>
+    <%= link_to 'My Profile', dashboard_index_path , :class => "btn btn-default"%>
+    <%= link_to 'Post', new_post_path , :class => "btn btn-default"%>
+    <%= link_to 'My Posts', my_posts_path, :method => :get, :class => "btn btn-default"%>
+  </div>
+
+  <div class="row"><h2>Your recent posts</h2><hr> </div>
+  <% @posts.each do |post| %>
+  <div class="row">
+    <%= post.title %> <br>
+    <%= post.body %> <br>
+    - Posted on <%= post.created_at.strftime("%d-%m-%Y %H:%M") %> <br><br>
+    <%= link_to 'Comment', new_comment_path, :class => "btn btn-default"%>
+    <hr>
+  </div>
+  <% end %>
+  <%= link_to 'Back', root_path %>
+</div>
