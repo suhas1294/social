@@ -6,11 +6,19 @@
   .lync{
     color: blue !important;
   }
+  .main-post{
+    border: 1px solid black;
+    padding: 5px;
+    margin: 1%;
+    background-color: #f9f9f9;
+  }
+  .dashboard{
+    background-color: #cbd8f2;
+    padding: 2%;
+  }
 </style>
-
-<div class="container">
+<div class="container dashboard">
   <div class="row custom">
-    <%#= link_to 'My Profile', "/dashboard/#{current_user.id}", method: :get , :class => "btn btn-default"%>
     <%= link_to 'News Feed', root_path , :class => "btn btn-default"%>
     <%= link_to 'My Profile', dashboard_index_path , :class => "btn btn-default"%>
     <%= link_to 'Post', new_post_path , :class => "btn btn-default"%>
@@ -22,10 +30,16 @@
   <div class="row"><h2>Recent Posts</h2><hr> </div>
   <% @posts.each do |post| %>
   <div class="row">
-    <%= post.title %> <br>
-    <%= post.body %> <br><br>
-    -posted by <%= link_to post.user.username, show_user_path_url(post.user.id), :class => "lync" %> &thinsp;&thinsp;&thinsp;
-    <%= link_to 'Comment', post_path(post.id), method: :get, :class => "btn btn-default"%>
+    <div class="row main-post">
+     <!-- <h4> <%#= post.title %></h4> <hr> -->
+      <%= post.body %> <br><br>
+    </div>
+    -posted by <%= link_to post.user.username, show_user_path_url(post.user.id), :class => "lync" %> &thinsp;&thinsp;&thinsp; <br><br>
+    <%= form_for :comment, url: comments_path, method: :post do |f| %>
+      <%= f.label :Type_comment_here %>
+      <%= f.text_field :comment %>
+    <% end %><br>
+    <%= link_to 'Comment', post_path(post.id), method: :get, :class => "btn btn-default"%><br><br>
     <hr>
   </div>
   <% end %>

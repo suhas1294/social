@@ -3,13 +3,12 @@
     <%= @target_user.profile_pic %> <br>
     <%= @target_user.username %> <br>
     <%= @target_user.email %> <br><br><br>
-    <% if current_user.friends_with?(@target_user) %>
-    <%= "You are already friends" %> <br><br><br>
-    <% else %>
     To Know more about <%= @target_user.username %>
+    <%#= link_to 'send him a Friend request', friends_path(@target_user.id),method: :post, :class => "btn btn-default"%>
+
     <%= link_to "send him a Friend request", create_friend_request_url(:user_id => @target_user.id),
-    :method => :post,:target => "_self", :class => "btn btn-default" %>
-    <% end %> <br><br>
+     :method => :post,:target => "_self", :class => "btn btn-default" %>
+    <%#= link_to 'send him a Friend request', "/friends/100", method: :get , :class => "btn btn-default"%><br><br><br>
     <%= link_to 'Back', root_path %>
 
 
