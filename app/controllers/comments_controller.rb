@@ -4,28 +4,22 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def index
-
-  end
-
   def create
-
+    binding.pry
+    @comment = Comment.new(comment_params)
+    @comment.save!
+    redirect_to root_path
   end
 
-  def show
-
+  private
+  def comment_params
+    begin
+      params.require(:comment).permit(:comment, :post_id, :user_id)
+    rescue
+      p e
+      p e.backtrace
+    end
   end
 
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def destroy
-
-  end
 
 end

@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <%= image_tag @target_user.profile_pic.url(:thumb) ,:style=> "width: 100px; " %> <br>
+    <%= @target_user.profile_pic %> <br>
     <%= @target_user.username %> <br>
     <%= @target_user.email %> <br><br><br>
     <% if current_user.friends_with?(@target_user) %>
