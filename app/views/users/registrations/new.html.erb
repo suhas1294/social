@@ -1,50 +1,104 @@
-<h2>Sign up</h2>
+<style type="text/css">
+  .left-block{
+    margin-left: 2%;
+    padding-left: 2%;
+  }
+  .right-block{
+    margin-right: 2%;
+    padding-right: 2%;
+  }
+  ol{
+    margin:3px;
+  }
+  a{
+    color: blue !important;
+  }
+  .ps{
+    color: green !important;
+  }
+  .spe_note{
+    color: red;
+  }
+</style>
 
-<%= form_for(resource, :html => { :multipart => true }, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<%= devise_error_messages! %>
+<div>
+  <div class="row">
+    <div class="col-md-6 col-xs-6">
+      <div class="row left-block">
+        <h2>Sign up</h2>
 
-<div class="field">
-  <%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %>
+        <%= form_for(resource, :html => { :multipart => true }, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :First_name %><br />
+          <%= f.text_field :first_name, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :Last_name %><br />
+          <%= f.text_field :last_name, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :Username %><br />
+          <%= f.text_field :username, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :Upload_Profile_Pic %><br />
+          <%= f.file_field :profile_pic, as: :file%>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Sign up" %>
+        </div>
+        <% end %>
+
+        <%= link_to 'Log In', new_user_session_path, :method => :get, :class => "btn btn-default"%>
+      </div>
+    </div>
+    <div class="col-md-6 col-xs-6">
+      <div class="row right-block">
+        <h3>Note regarding this application</h3>
+        <strong><u>List of Requirements done </u></strong>
+        <ol>
+          <li>Users can be registered and logged in using Devise Gem </li>
+          <li>Each users will be unique by their email address.</li>
+          <li>user attributes has first_name, last_name, username, email, profile_pic</li>
+          <li>Necessary validations provided</li>
+          <li> All users can send friend requests and accept friend requests and can become friends ("has_friendship" gem used)</li>
+          <li>Post and commenting section for each users</li>
+          <li>Anybody can view and comment on posts</li>
+        </ol>
+        <hr>
+        <strong><u>Due to Time constraint some of these Requirements couldn't be completed: </u></strong>
+        <ol>
+          <li>categorizing posts as public/friends </li>
+          <li class="ps"> Know the concept, but Time not enough :( </li>
+          <li>Notification system (again, time not enough ! )</li>
+          <li>Photo uploading for posts</li>
+          <p class="spe_note">Note : Please RUN the SEED file</p>
+        </ol>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="field">
-  <%= f.label :First_name %><br />
-  <%= f.text_field :first_name, autofocus: true %>
-</div>
-
-<div class="field">
-  <%= f.label :Last_name %><br />
-  <%= f.text_field :last_name, autofocus: true %>
-</div>
-
-<div class="field">
-  <%= f.label :Username %><br />
-  <%= f.text_field :username, autofocus: true %>
-</div>
-
-<div class="field">
-<%= f.label :Upload_Profile_Pic %><br />
-  <%= f.file_field :photo, as: :file%>
-</div>
-
-<div class="field">
-  <%= f.label :password %>
-  <% if @minimum_password_length %>
-  <em>(<%= @minimum_password_length %> characters minimum)</em>
-  <% end %><br />
-  <%= f.password_field :password, autocomplete: "off" %>
-</div>
-
-<div class="field">
-  <%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, autocomplete: "off" %>
-</div>
-
-<div class="actions">
-  <%= f.submit "Sign up" %>
-</div>
-<% end %>
-
-<%= link_to 'Log In', new_user_session_path, :method => :get, :class => "btn btn-default"%>
-
