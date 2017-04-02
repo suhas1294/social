@@ -7,6 +7,7 @@
   # resources :user, only: [:show]
 
   # friendship routes
+  get "/show_all_friends" => "friends#show_all_friends", :as => "show_all_friends"
   post "/accept_friend_request/:id" => "friends#accept_friend_request", :as => "accept_friend_request"
   post "/reject_friend_request/:id" => "friends#reject_friend_request", :as => "reject_friend_request"
   post "/block_friend_request/:id" => "friends#block_friend_request", :as => "block_friend_request"
