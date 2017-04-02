@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% current_user.requested_friends.each do |friend| %>
+        <tr>
+          <td><%= friend.first_name %></td>
+          <td><%= friend.last_name %></td>
+          <td><%= friend.username %></td>
+          <%# binding.pry %>
+          <td><%= link_to 'ACCEPT', accept_friend_request_url(friend.id), method: :post, :target => "_self", :class => "btn btn-default" %></td>
+          <td><%= link_to 'Deny', reject_friend_request_path(friend.id), method: :post, :target => "_self", :class => "btn btn-default" %></td>
+          <td><%= link_to 'Block', block_friend_request_path(friend.id), method: :post, :target => "_self", :class => "btn btn-default" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= link_to 'Back', root_path %>
+  </div>
+</div>
+

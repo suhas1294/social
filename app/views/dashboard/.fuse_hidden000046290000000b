@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    <%# binding.pry %>
+    First Name : <%= current_user.first_name %> <br>
+    Last Name : <%= current_user.last_name %> <br>
+    Username : <%= current_user.username %> <br>
+    <%= image_tag current_user.profile_pic.url  %>
+  </div>
+</div>
