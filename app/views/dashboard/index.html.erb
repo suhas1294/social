@@ -1,9 +1,39 @@
-<div class="container">
-  <div class="row">
+<style type="text/css">
+  .custom{
+    border: 1px solid black;
+    padding: 5px;
+  }
+  .lync{
+    color: blue !important;
+  }
+  .main-post{
+    border: 1px solid black;
+    padding: 5px;
+    margin: 1%;
+    background-color: #f9f9f9;
+  }
+  .dashboard{
+    background-color: #cbd8f2;
+    padding: 2%;
+  }
+</style>
+
+<div class="container dashboard">
+  <div class="row custom">
+    <%= link_to 'News Feed', root_path , :class => "btn btn-default"%>
+    <%= link_to 'My Profile', dashboard_index_path , :class => "btn btn-default"%>
+    <%= link_to 'Post', new_post_path , :class => "btn btn-default"%>
+    <%= link_to 'My Posts', my_posts_path, :method => :get, :class => "btn btn-default"%>
+    <%= link_to 'Friend Requests', friends_path ,method: :get, :class => "btn btn-default"%>
+    <%= link_to 'My Friends', show_all_friends_path ,method: :get, :class => "btn btn-default"%>
+  </div>
+
+    <div class="row">
     <%# binding.pry %>
     First Name : <%= current_user.first_name %> <br>
     Last Name : <%= current_user.last_name %> <br>
     Username : <%= current_user.username %> <br>
     <%= image_tag current_user.profile_pic.url  %>
   </div>
+
 </div>

@@ -19,7 +19,7 @@
   <div class="row"><h2>Your recent posts</h2><hr> </div>
   <% @posts.each do |post| %>
   <div class="row">
-    <%= post.title %> <br>
+    <%#= post.title %> <br>
     <%= post.body %> <br>
     - Posted on <%= post.created_at.strftime("%d-%m-%Y %H:%M") %> <br><br>
     <%= link_to 'Comment', new_comment_path, :class => "btn btn-default"%>
