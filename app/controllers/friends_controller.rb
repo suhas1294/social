@@ -27,4 +27,8 @@ class FriendsController < ApplicationController
     current_user.block_friend(@requested_user)
     redirect_to root_path
   end
+
+  def show_all_friends
+    current_user.friends
+  end
 end
